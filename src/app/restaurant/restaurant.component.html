@@ -1,0 +1,33 @@
+<div class="container p-2">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Search for Restaurant"
+            aria-label="Search for a restaurant by name or location" aria-describedby="searchHint" #searchTerm="ngModel"
+            ngModel />
+    </div>
+    <small id="searchHint" class="form-text text-muted">
+        Please enter the name or location of the restaurant you want to search for.
+    </small>
+    <div class="container">
+        <!-- app.component.html -->
+        <div class="container mt-5">
+            <div class="row p-2">
+                @for (restaurant of restaurants|searchFilter:searchTerm.value; track $index) {
+                <div class="col-md-4">
+
+                    <div class="card mb-4" [attr.aria-label]="'Restaurant Card for '+ restaurant.name ">
+                        <div class="card-body">
+                            <h5 class="card-title" aria-label="Restaurant Name"
+                                aria-describedby="restaurantDescription">{{ restaurant.name }}</h5>
+                            <p class="card-text" aria-label="Cuisine Type">Cuisine: {{ restaurant.cuisineType }}</p>
+                            <p class="card-text" aria-label="Rate">Rate: {{ restaurant.rate }}</p>
+                            <p class="card-text" aria-label="Distance">Distance: {{ restaurant.distance }}</p>
+                            <p class="card-text" aria-label="Price Range">Price Range: {{ restaurant.priceRange }}</p>
+                        </div>
+                    </div>
+                </div>
+            }
+            </div>
+        </div>
+        
+    </div>
+</div>
